@@ -4,11 +4,11 @@ using System.Runtime.CompilerServices;
 namespace VeryUnsafe.Benchmarks
 {
     [MemoryDiagnoser]
-    [DisassemblyDiagnoser]
+    [DisassemblyDiagnoser(exportHtml: true)]
     public class ObjectPromotion
     {
-        private RecordA baseInstance = new(1, 5);
-        private RecordA baseInstanceUnsafe = new(1, 5);
+        private readonly RecordA baseInstance = new(1, 5);
+        private readonly RecordA baseInstanceUnsafe = new(1, 5);
 
         [Benchmark(Baseline = true)]
         public RecordB PromoteViaCopying()
@@ -18,8 +18,7 @@ namespace VeryUnsafe.Benchmarks
         [Benchmark]
         public RecordB PromoteUnsafe()
         {
-            VeryUnsafe.ChangeType<RecordB>(baseInstanceUnsafe);
-            return Unsafe.As<RecordA, RecordB>(ref baseInstanceUnsafe);
+            return VeryUnsafe.ChangeType<RecordB>(baseInstanceUnsafe);
         }
 
         public record RecordA(int A, int B)
