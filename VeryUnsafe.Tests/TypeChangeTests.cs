@@ -19,6 +19,36 @@ namespace VeryUnsafe.Tests
             Assert.True(instance.GetType() != typeof(C));
         }
 
+        [Test]
+        public void ChangeType2()
+        {
+            var instance = new C();
+            Assert.AreEqual(3, instance.Property);
+
+            VeryUnsafe.ChangeType2<A>(instance);
+            Assert.AreEqual(1, instance.Property);
+
+            VeryUnsafe.ChangeType2<B>(instance);
+            Assert.AreEqual(2, instance.Property);
+
+            Assert.True(instance.GetType() != typeof(C));
+        }
+
+        [Test]
+        public void ChangeType3()
+        {
+            var instance = new C();
+            Assert.AreEqual(3, instance.Property);
+
+            VeryUnsafe.ChangeType3<A>(instance);
+            Assert.AreEqual(1, instance.Property);
+
+            VeryUnsafe.ChangeType3<B>(instance);
+            Assert.AreEqual(2, instance.Property);
+
+            Assert.True(instance.GetType() != typeof(C));
+        }
+
         private class A
         {
             public virtual int Property => 1;
