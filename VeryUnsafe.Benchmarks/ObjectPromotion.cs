@@ -1,8 +1,10 @@
 ﻿using BenchmarkDotNet.Attributes;
+using System.Runtime.CompilerServices;
 
 namespace VeryUnsafe.Benchmarks
 {
     [MemoryDiagnoser]
+    [DisassemblyDiagnoser]
     public class ObjectPromotion
     {
         private RecordA baseInstance = new(1, 5);
@@ -17,7 +19,7 @@ namespace VeryUnsafe.Benchmarks
         public RecordB PromoteUnsafe()
         {
             VeryUnsafe.ChangeType<RecordB>(baseInstanceUnsafe);
-            return baseInstanceUnsafe as RecordB;
+            return Unsafe.As<RecordA, RecordB>(ref baseInstanceUnsafe);
         }
 
         public record RecordA(int A, int B)
