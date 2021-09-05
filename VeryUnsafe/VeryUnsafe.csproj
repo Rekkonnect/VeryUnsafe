@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <PackageId>VeryUnsafe</PackageId>
+    <Version>1.0.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Alex Kalfakakos</Authors>
+    <Company />
+    <Copyright>© 2021, Alex Kalfakakos</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/AlFasGD/VeryUnsafe</RepositoryUrl>
+    <PackageTags>unsafe, pointer, object</PackageTags>
+    <Description>A collection of various dangerous operations.</Description>
+  </PropertyGroup>
+  
+</Project>
