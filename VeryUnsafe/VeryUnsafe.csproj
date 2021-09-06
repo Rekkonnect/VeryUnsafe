@@ -6,7 +6,8 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
     <PackageId>VeryUnsafe</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
+    <PackageVersion>1.0.1</PackageVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Alex Kalfakakos</Authors>
     <Company />
@@ -15,6 +16,8 @@
     <RepositoryUrl>https://github.com/AlFasGD/VeryUnsafe</RepositoryUrl>
     <PackageTags>unsafe, pointer, object</PackageTags>
     <Description>A collection of various dangerous operations.</Description>
+    <PackageReleaseNotes>- Much, much faster ChangeType&lt;T&gt; (credits to WhiteBlackGoose)
+- ChangeType&lt;T&gt; now returns the new instance as of type T through Unsafe.As</PackageReleaseNotes>
   </PropertyGroup>
   
 </Project>
