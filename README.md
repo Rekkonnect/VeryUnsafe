@@ -65,5 +65,8 @@ because that can't happen (c) Tanner Gooding
 > Honestly I prefer my unsafe code safe<br>
 > But I also love micro-optimizations, so it's hard for me to decide whether I absolutely love it or despise it (c) Sebastian
 
+<hr>
+
+> Thanks, I hate it :laughing: (c) Sergio
 
 # Stay safe!
