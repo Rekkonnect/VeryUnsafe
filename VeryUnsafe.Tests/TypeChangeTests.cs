@@ -10,10 +10,10 @@ namespace VeryUnsafe.Tests
             var instance = new C();
             Assert.AreEqual(3, instance.Property);
 
-            VeryUnsafe.ChangeType<A>(instance);
+            VeryUnsafeCollection.ChangeType<A>(instance);
             Assert.AreEqual(1, instance.Property);
 
-            VeryUnsafe.ChangeType<B>(instance);
+            VeryUnsafeCollection.ChangeType<B>(instance);
             Assert.AreEqual(2, instance.Property);
 
             Assert.True(instance.GetType() != typeof(C));

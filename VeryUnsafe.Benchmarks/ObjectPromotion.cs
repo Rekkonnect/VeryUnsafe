@@ -18,7 +18,7 @@ namespace VeryUnsafe.Benchmarks
         [Benchmark]
         public RecordB PromoteUnsafe()
         {
-            return VeryUnsafe.ChangeType<RecordB>(baseInstanceUnsafe);
+            return VeryUnsafeCollection.ChangeType<RecordB>(baseInstanceUnsafe);
         }
 
         public record RecordA(int A, int B)

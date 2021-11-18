@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 namespace VeryUnsafe
 {
     /// <summary>Provides a collection of dangerous memory operations, some requiring usage of <see langword="unsafe"/>.</summary>
-    public static unsafe class VeryUnsafe
+    public static unsafe class VeryUnsafeCollection
     {
         /// <summary>Gets the object's type handle value address.</summary>
         /// <param name="obj">The object instance whose type handle to get.</param>
