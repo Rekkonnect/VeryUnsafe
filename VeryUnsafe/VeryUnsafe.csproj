@@ -7,17 +7,21 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
     <PackageId>VeryUnsafe</PackageId>
-    <Version>1.0.1</Version>
-    <PackageVersion>1.0.1</PackageVersion>
+    <Version>1.0.2</Version>
+    <PackageVersion>1.0.2</PackageVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Alex Kalfakakos</Authors>
     <Company />
     <Copyright>© 2021, Alex Kalfakakos</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/AlFasGD/VeryUnsafe</RepositoryUrl>
-    <PackageTags>unsafe, pointer, object</PackageTags>
+    <PackageTags>unsafe, pointer, object, func, action</PackageTags>
     <Description>A collection of various dangerous operations.</Description>
-    <PackageReleaseNotes>- Much, much faster ChangeType&lt;T&gt; (credits to WhiteBlackGoose)
+    <PackageReleaseNotes>1.0.2 changes:
+- Added convenient Func to Action extensions
+
+1.0.1 changes:
+- Much, much faster ChangeType&lt;T&gt; (credits to WhiteBlackGoose)
 - ChangeType&lt;T&gt; now returns the new instance as of type T through Unsafe.As</PackageReleaseNotes>
   </PropertyGroup>
 

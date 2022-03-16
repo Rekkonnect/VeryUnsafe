@@ -7,10 +7,12 @@ Carefully read the documentation's remarks, for the operations are really unsafe
 ## Features
 - `GetObjectHandleAddress`, to get the address of the type handle of an object
 - `ChangeType`, to change the type handle of an object at runtime, without requiring reallocation
+- `ToAction` extensions for `Func` delegates, using `ChangeType`
 
 ## Usages
 - Pro-/demote objects at runtime
 - Mimic another type (may or may not be heavily inspired by [Seb-stian/GetVoid](https://github.com/Seb-stian/GetVoid))
+- Discard the return type of a delegate instance (inspired by a real world usage)
 - Corrupt the managed heap in one more way
 
 ## Benchmarks
