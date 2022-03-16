@@ -1,12 +1,11 @@
 ﻿using BenchmarkDotNet.Running;
 
-namespace VeryUnsafe.Benchmarks
+namespace VeryUnsafe.Benchmarks;
+
+public static class Program
 {
-    public static class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            BenchmarkRunner.Run<ObjectPromotion>();
-        }
+        BenchmarkRunner.Run<ObjectPromotion>();
     }
 }

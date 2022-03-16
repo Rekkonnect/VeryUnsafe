@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-
+    <LangVersion>10.0</LangVersion>
+    
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
     <PackageId>VeryUnsafe</PackageId>
@@ -19,5 +20,9 @@
     <PackageReleaseNotes>- Much, much faster ChangeType&lt;T&gt; (credits to WhiteBlackGoose)
 - ChangeType&lt;T&gt; now returns the new instance as of type T through Unsafe.As</PackageReleaseNotes>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VeryUnsafe.SourceGeneration\VeryUnsafe.SourceGeneration.csproj" OutputItemType="Analyzer" />
+  </ItemGroup>
   
 </Project>
