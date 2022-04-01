@@ -31,18 +31,16 @@ public class DelegateToActionSourceGenerator : ISourceGenerator
 
     private string GenerateMethods()
     {
-        const string header = $@"
+        const string header =
+$@"
 using System;
 
 namespace {nameof(VeryUnsafe)};
 
 public static unsafe partial class {veryUnsafeName}
-{{
-";
+{{";
 
-        const string footer = $@"
-}}
-";
+        const string footer = "}";
 
         var builder = new StringBuilder();
         builder.Append(header);
@@ -53,7 +51,7 @@ public static unsafe partial class {veryUnsafeName}
             builder.Append(methodGenerator.GenerateNext());
         }
 
-        builder.Append(footer);
+        builder.AppendLine(footer);
         return builder.ToString();
     }
 
@@ -74,13 +72,16 @@ public static unsafe partial class {veryUnsafeName}
 
             if (arityEnumerator.CurrentArity > 0)
             {
+                if (arityEnumerator.CurrentArity > 1)
+                    typeParameterDocumentation += "\n";
+                
                 typeParameterDocumentation += GenerateTypeParameterDocumentation(arityEnumerator.CurrentArity);
             }
 
             return
 $@"
     /// <summary>Changes the type of the <seealso cref=""Func{{{funcTypeArguments}}}""/> delegate to the equivalent <seealso cref=""{boundActionBrackets}""/> one.</summary>
-    {typeParameterDocumentation}
+{typeParameterDocumentation}
     /// <typeparam name=""TResult"">The return type of the <seealso cref=""Func{{{funcTypeArguments}}}""/> instance, which will be ignored.</typeparam>
     /// <param name=""func"">The delegate instance whose type to change.</param>
     /// <returns>The same instance as an <seealso cref=""{boundActionBrackets}""/> instance.</returns>
@@ -94,8 +95,7 @@ $@"
             string GenerateTypeParameterDocumentation(int index)
             {
                 return
-$@"
-    /// <typeparam name=""T{index}"">The type of the {index}{GetOrdinalSuffix(index)} argument of the <seealso cref=""Func{{{funcTypeArguments}}}""/> instance.</typeparam>";
+$@"    /// <typeparam name=""T{index}"">The type of the {index}{GetOrdinalSuffix(index)} argument of the <seealso cref=""Func{{{funcTypeArguments}}}""/> instance.</typeparam>";
             }
         }
 
