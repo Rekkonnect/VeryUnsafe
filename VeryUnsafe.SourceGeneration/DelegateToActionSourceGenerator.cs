@@ -85,7 +85,10 @@ $@"
     /// <typeparam name=""TResult"">The return type of the <seealso cref=""Func{{{funcTypeArguments}}}""/> instance, which will be ignored.</typeparam>
     /// <param name=""func"">The delegate instance whose type to change.</param>
     /// <returns>The same instance as an <seealso cref=""{boundActionBrackets}""/> instance.</returns>
-    /// <remarks>Note that the original instance is affected, and its runtime type is changed using <seealso cref=""ChangeType{{T}}(object)""/>.</remarks>
+    /// <remarks>
+    /// Note that the original instance is affected, and its runtime type is changed using <seealso cref=""ChangeType{{T}}(object)""/>.
+    /// Do not use if the return type is a struct; the invocation will break with a <seealso cref=""NullReferenceException""/>.
+    /// </remarks>
     public static {boundActionCarets} ToAction<{funcTypeArguments}>(this Func<{funcTypeArguments}> func)
     {{
         return ChangeType<{boundActionCarets}>(func);
