@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace VeryUnsafe.Tests;
+namespace Danger.VeryUnsafe.Tests;
 
 public class TypeChangeTests
 {

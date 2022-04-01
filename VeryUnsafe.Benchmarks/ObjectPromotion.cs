@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 
-namespace VeryUnsafe.Benchmarks;
+namespace Danger.VeryUnsafe.Benchmarks;
 
 [MemoryDiagnoser]
 [DisassemblyDiagnoser(exportHtml: true)]

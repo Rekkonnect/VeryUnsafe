@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 
-namespace VeryUnsafe.Tests;
+namespace Danger.VeryUnsafe.Tests;
 
 public class DelegateToActionTests
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace VeryUnsafe;
+namespace Danger.VeryUnsafe;
 
 /// <summary>Provides a collection of dangerous memory operations, some requiring usage of <see langword="unsafe"/>.</summary>
 public static unsafe partial class VeryUnsafe

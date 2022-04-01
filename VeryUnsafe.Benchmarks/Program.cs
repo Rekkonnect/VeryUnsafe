@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Running;
 
-namespace VeryUnsafe.Benchmarks;
+namespace Danger.VeryUnsafe.Benchmarks;
 
 public static class Program
 {

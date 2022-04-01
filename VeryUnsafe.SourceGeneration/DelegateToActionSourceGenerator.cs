@@ -2,7 +2,7 @@
 using System;
 using System.Text;
 
-namespace VeryUnsafe.SourceGenerators;
+namespace Danger.VeryUnsafe.SourceGenerators;
 
 [Generator]
 public class DelegateToActionSourceGenerator : ISourceGenerator
@@ -35,7 +35,7 @@ public class DelegateToActionSourceGenerator : ISourceGenerator
 $@"
 using System;
 
-namespace {nameof(VeryUnsafe)};
+namespace {nameof(Danger)}.{nameof(VeryUnsafe)};
 
 public static unsafe partial class {veryUnsafeName}
 {{";
