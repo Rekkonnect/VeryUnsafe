@@ -39,15 +39,47 @@ public static unsafe partial class VeryUnsafe
         *address = newType.TypeHandle.Value;
     }
 
+    /// <summary>Gets the size of an object type.</summary>
+    /// <typeparam name="T">The type of the object.</typeparam>
+    /// <returns>The size that an object of type <typeparamref name="T"/> reserves.</returns>
+    public static int GetObjectSize<T>()
+        where T : class
+    {
+        return TypeHandles<T>.ObjectSize;
+    }
+
+    /// <summary>From allocated memory, prepares an object of the requested type. No constructor is called.</summary>
+    /// <typeparam name="T">The type of the object to initialize.</typeparam>
+    /// <param name="memory">The already allocated memory that the object will live in.</param>
+    /// <returns>The instance of the object that is allocated in the block of memory that was provided in the method.</returns>
+    /// <remarks>
+    /// This method is intended to be called on a <see langword="stackalloc"/>'d block of memory.
+    /// Otherwise, please, for the love of whomever you believe in, do a proper heap allocation.
+    /// </remarks>
+    public static T InitializeObject<T>(byte* memory)
+        where T : class
+    {
+        *(nint*)memory = TypeHandles<T>.Handle;
+        return Unsafe.AsRef<T>(&memory);
+    }
+
     private static class TypeHandles<T>
     {
-        private static readonly nint handle = typeof(T).TypeHandle.Value;
+        public static readonly nint Handle = typeof(T).TypeHandle.Value;
+        
+        public static int ObjectSize { get; }
+        
+        static TypeHandles()
+        {
+            // This is probably the hackiest thing in this entire project
+            ObjectSize = ((int*)Handle)[1];
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void ChangeType(object obj)
         {
             nint* address = GetObjectHandleAddress(obj);
-            *address = handle;
+            *address = Handle;
         }
     }
 }

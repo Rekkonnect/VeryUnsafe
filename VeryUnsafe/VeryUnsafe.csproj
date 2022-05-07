@@ -7,29 +7,18 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
     <PackageId>VeryUnsafe</PackageId>
-    <Version>1.0.4</Version>
-    <PackageVersion>1.0.4</PackageVersion>
+    <Version>1.1.0</Version>
+    <PackageVersion>1.1.0</PackageVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Alex Kalfakakos</Authors>
     <Company />
-    <Copyright>© 2021, Alex Kalfakakos</Copyright>
+    <Copyright>© 2021-2022, Alex Kalfakakos</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/AlFasGD/VeryUnsafe</RepositoryUrl>
-    <PackageTags>unsafe, pointer, object, func, action</PackageTags>
+    <PackageTags>unsafe, pointer, object, func, action, stackalloc, stack</PackageTags>
     <Description>A collection of various dangerous operations.</Description>
-    <PackageReleaseNotes>1.0.4 changes:
-- Rename namespace to Danger.VeryUnsafe (makes using it easier)
-- Document breaking behavior when using ToAction on struct-returning delegates
-
-1.0.3 changes:
-- Remove required dependency to the source generator project
-
-1.0.2 changes:
-- Added convenient Func to Action extensions
-
-1.0.1 changes:
-- Much, much faster ChangeType&lt;T&gt; (credits to WhiteBlackGoose)
-- ChangeType&lt;T&gt; now returns the new instance as of type T through Unsafe.As</PackageReleaseNotes>
+    <PackageReleaseNotes>1.1.0 changes:
+- Provide the ability to initialize an object to allocated memory (enables stackalloc objects)</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

@@ -8,14 +8,29 @@ Carefully read the documentation's remarks, for the operations are really unsafe
 - `GetObjectHandleAddress`, to get the address of the type handle of an object
 - `ChangeType`, to change the type handle of an object at runtime, without requiring reallocation
 - `ToAction` extensions for `Func` delegates, using `ChangeType`
+- `GetObjectSize`, to get the allocated memory size of an object
+- `InitializeObject`, to prepare the given block of memory for being used as an object, and get a reference to it
 
 ## Usages
 - Pro-/demote objects at runtime
 - Mimic another type (may or may not be heavily inspired by [Seb-stian/GetVoid](https://github.com/Seb-stian/GetVoid))
 - Discard the return type of a delegate instance (inspired by a real world usage)
+- Allocate a reference type object using `stackalloc`
 - Corrupt the managed heap in one more way
 
+### Allocate a reference type object using `stackalloc`? Are you crazy?
+
+Yes, I'm very crazy, and this is how you can be too:
+```csharp
+int size = VeryUnsafe.GetObjectSize<Point4D>();
+byte* memory = stackalloc byte[size];
+var point = VeryUnsafe.InitializeObject<Point4D>(memory);
+```
+
+No constructor is called, the memory is just allocated and reserved for your stack-living object.
+
 ## Benchmarks
+### Changing Object Type
 It's fast. Hella fast.
 ```assembly
 push      rax
@@ -36,8 +51,16 @@ And, well, here are the results of a [reference benchmark](VeryUnsafe.Benchmarks
 |     PromoteUnsafe | 0.0022 ns | 0.0066 ns | 0.0059 ns | 0.0000 ns | 0.001 |      - |      31 B |         - |
 > ObjectPromotion.PromoteUnsafe: Default -> The method duration is indistinguishable from the empty method duration
 
+### Allocating
+You hear everywhere that object allocations are costly. **Heap** allocations, that is. And here is proof from a [reference benchmark](VeryUnsafe.Benchmarks/ObjectAllocation.cs):
+
+|           Method |     Mean |     Error |    StdDev | Ratio |  Gen 0 | Code Size | Allocated |
+|----------------- |---------:|----------:|----------:|------:|-------:|----------:|----------:|
+|     AllocateHeap | 4.494 ns | 0.1228 ns | 0.3340 ns |  1.00 | 0.0077 |      42 B |      32 B |
+| StackAllocUnsafe | 1.038 ns | 0.0132 ns | 0.0124 ns |  0.22 |      - |      89 B |         - |
+
 ## To use or not to use
-It's unsafe af. E. g. GC can move instances after we got the address but before we write to it. Or JIT doing some dirt that we broke the whole thing.
+Everything here is unsafe af. E. g. GC can move instances after we got the address but before we write to it. Or JIT doing some dirt that we broke the whole thing.
 
 ## Some constructive feedback
 
@@ -70,5 +93,9 @@ because that can't happen (c) Tanner Gooding
 <hr>
 
 > Thanks, I hate it :laughing: (c) Sergio
+
+<hr>
+
+> https://tenor.com/view/exorcism-father-mulvehill-evil-z-is-for-zombies-get-out-evil-spirit-gif-22407195 (c) Fred
 
 # Stay safe!
