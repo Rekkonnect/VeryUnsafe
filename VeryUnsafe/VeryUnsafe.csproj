@@ -7,22 +7,20 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
     <PackageId>VeryUnsafe</PackageId>
-    <Version>1.1.0</Version>
-    <PackageVersion>1.1.0</PackageVersion>
+    <Version>1.1.1</Version>
+    <PackageVersion>1.1.1</PackageVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Alex Kalfakakos</Authors>
     <Company />
-    <Copyright>© 2021-2022, Alex Kalfakakos</Copyright>
+    <Copyright>© 2021-2023, Alex Kalfakakos</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/AlFasGD/VeryUnsafe</RepositoryUrl>
-    <PackageTags>unsafe, pointer, object, func, action, stackalloc, stack</PackageTags>
+    <RepositoryUrl>https://github.com/Rekkonnect/VeryUnsafe</RepositoryUrl>
+    <PackageTags>unsafe, pointer, object, func, action, stackalloc, stack, list</PackageTags>
     <Description>A collection of various dangerous operations.</Description>
-    <PackageReleaseNotes>1.1.0 changes:
-- Provide the ability to initialize an object to allocated memory (enables stackalloc objects)</PackageReleaseNotes>
+    <PackageReleaseNotes>1.1.1 changes:
+- UnsafeCollections containing unsafe operations for handling lists</PackageReleaseNotes>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
 
   <ItemGroup>
     <ProjectReference Include="..\VeryUnsafe.SourceGeneration\VeryUnsafe.SourceGeneration.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />

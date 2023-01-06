@@ -10,12 +10,19 @@ Carefully read the documentation's remarks, for the operations are really unsafe
 - `ToAction` extensions for `Func` delegates, using `ChangeType`
 - `GetObjectSize`, to get the allocated memory size of an object
 - `InitializeObject`, to prepare the given block of memory for being used as an object, and get a reference to it
+- `UnsafeCollections`
+  - `Resize` to set the size of the list and conditionally reallocate
+  - `ListWithDefaultItems` and `ListWithUnderlyingArray` for quick and powerful initialization
 
 ## Usages
 - Pro-/demote objects at runtime
 - Mimic another type (may or may not be heavily inspired by [Seb-stian/GetVoid](https://github.com/Seb-stian/GetVoid))
 - Discard the return type of a delegate instance (inspired by a real world usage)
 - Allocate a reference type object using `stackalloc`
+- For lists
+  - Create a new list from an underlying array
+  - Modify the list more unsafely
+  - Prevent collection modification errors
 - Corrupt the managed heap in one more way
 
 ### Allocate a reference type object using `stackalloc`? Are you crazy?
