@@ -5,28 +5,21 @@ using System.Text;
 namespace Danger.VeryUnsafe.SourceGenerators;
 
 [Generator]
-public class DelegateToActionSourceGenerator : ISourceGenerator
+public class DelegateToActionSourceGenerator : IIncrementalGenerator
 {
     private const string veryUnsafeName = "VeryUnsafe";
 
-    public int MaxArity { get; }
+    public const int MaxArity = 16;
 
-    public DelegateToActionSourceGenerator()
-        : this(16) { }
-    public DelegateToActionSourceGenerator(int maxArity)
+    public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        MaxArity = maxArity;
+        context.RegisterImplementationSourceOutput(context.CompilationProvider, Generate);
     }
 
-    public void Execute(GeneratorExecutionContext context)
+    private void Generate(SourceProductionContext sourceProductionContext, Compilation compilation)
     {
         var methodsSource = GenerateMethods();
-        context.AddSource($"{veryUnsafeName}.Delegates.g.cs", methodsSource);
-    }
-
-    public void Initialize(GeneratorInitializationContext context)
-    {
-        // No initialization required for this one
+        sourceProductionContext.AddSource($"{veryUnsafeName}.Delegates.g.cs", methodsSource);
     }
 
     private string GenerateMethods()

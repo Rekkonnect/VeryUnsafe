@@ -19,7 +19,10 @@
     <Description>A collection of various dangerous operations.</Description>
     <PackageReleaseNotes>1.1.0 changes:
 - Provide the ability to initialize an object to allocated memory (enables stackalloc objects)</PackageReleaseNotes>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
 
   <ItemGroup>
     <ProjectReference Include="..\VeryUnsafe.SourceGeneration\VeryUnsafe.SourceGeneration.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
