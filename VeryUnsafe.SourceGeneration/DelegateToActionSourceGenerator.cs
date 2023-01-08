@@ -13,16 +13,14 @@ public class DelegateToActionSourceGenerator : IIncrementalGenerator
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        context.RegisterImplementationSourceOutput(context.CompilationProvider, Generate);
+        context.RegisterPostInitializationOutput(ctx =>
+        {
+            var methodsSource = GenerateMethods();
+            ctx.AddSource($"{veryUnsafeName}.Delegates.g.cs", methodsSource);
+        });
     }
 
-    private void Generate(SourceProductionContext sourceProductionContext, Compilation compilation)
-    {
-        var methodsSource = GenerateMethods();
-        sourceProductionContext.AddSource($"{veryUnsafeName}.Delegates.g.cs", methodsSource);
-    }
-
-    private string GenerateMethods()
+    private static string GenerateMethods()
     {
         const string header =
 $@"
