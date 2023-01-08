@@ -13,11 +13,13 @@ public class DelegateToActionSourceGenerator : IIncrementalGenerator
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        context.RegisterPostInitializationOutput(ctx =>
-        {
-            var methodsSource = GenerateMethods();
-            ctx.AddSource($"{veryUnsafeName}.Delegates.g.cs", methodsSource);
-        });
+        context.RegisterPostInitializationOutput(Generate);
+    }
+
+    private void Generate(IncrementalGeneratorPostInitializationContext postInitializationContext)
+    {
+        var methodsSource = GenerateMethods();
+        postInitializationContext.AddSource($"{veryUnsafeName}.Delegates.g.cs", methodsSource);
     }
 
     private static string GenerateMethods()
