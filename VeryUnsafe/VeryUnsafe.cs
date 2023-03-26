@@ -63,11 +63,25 @@ public static unsafe partial class VeryUnsafe
         return Unsafe.AsRef<T>(&memory);
     }
 
+    /// <summary>
+    /// Gets the provided reference as a pointer of the provided type.
+    /// </summary>
+    /// <typeparam name="T">The type of the stored elements.</typeparam>
+    /// <param name="reference">The reference to reinterpret as a pointer.</param>
+    /// <returns>The provided reference reinterpreted as a pointer.</returns>
+    public static T* ReferenceToPointer<T>(ref T reference)
+    {
+        fixed (T* ptr = &reference)
+        {
+            return ptr;
+        }
+    }
+
     private static class TypeHandles<T>
     {
         public static readonly nint Handle = typeof(T).TypeHandle.Value;
-        
-        public static int ObjectSize { get; }
+
+        public static readonly int ObjectSize;
         
         static TypeHandles()
         {
